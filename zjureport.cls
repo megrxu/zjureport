@@ -1,3 +1,4 @@
+\ProvidesClass{zjureport}[2017/11/11 v1.1 Ching Swy]
 \LoadClass{article}
 \RequirePackage{xeCJK}
 \RequirePackage{ctex}
@@ -17,7 +18,9 @@
 \renewcommand\thesubsubsection{(\arabic{subsubsection})}
 \newlist{clause}{enumerate}{1}
 \setlist[clause]{fullwidth,itemindent=2em,label=(\arabic*)}
-\newCJKfontfamily[song]\song{SimSun}[AutoFakeBold]
+\newCJKfontfamily[song]\song{SimSun}
+%[AutoFakeBold]
+% 这句估计15不支持这样的语法
 
 % \setmainfont{CMU Serif}
 \setmonofont{Lucida Console}
@@ -56,7 +59,42 @@
   tabsize=2,
 }
 
+\newcommand\dmajor[1]{\def\major{#1}}
+\newcommand\dname[1]{\def\name{#1}}
+
+
 \pagestyle{fancy}
 \lhead{实验名称：\newtitle}
 \chead{姓名：\name}
 \rhead{学号：\stuid}
+
+% 下划线的一个定义
+\def\ZJUunderline[#1]#2{%
+  \underline{\hbox to #1{\hfil#2\hfil}}}
+
+\newcommand{\makeCover}{
+\begin{figure}[h]
+  \begin{minipage}{0.7\linewidth}
+    \centerline{\includegraphics[width=\linewidth]{head.jpg}}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{.3\linewidth}
+    \raggedleft
+    \begin{tabular*}{.8\linewidth}{ll}
+      专业： & \ZJUunderline[70pt]\major   \\
+      姓名： & \ZJUunderline[70pt]\name    \\
+      学号： & \ZJUunderline[70pt]\stuid   \\
+      日期： & \ZJUunderline[70pt]\newdate \\
+      地点： & \ZJUunderline[70pt]\loc
+    \end{tabular*}
+  \end{minipage}
+\end{figure}
+
+\begin{table}[!htbp]
+  \centering
+  \begin{tabular*}{\linewidth}{llllll}
+    课程名称： & \ZJUunderline[150pt]\course   & 指导老师： & \ZJUunderline[50pt]\tutor   & 成绩：       &  \ZJUunderline[50pt]\grades \\
+    实验名称： & \ZJUunderline[150pt]\newtitle & 实验类型： &\ZJUunderline[50pt]\exptype & 同组学生姓名：& \ZJUunderline[50pt]\group
+  \end{tabular*}
+\end{table}
+}
