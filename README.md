@@ -22,8 +22,3 @@ xelatex report.tex
 
 - ~~Add a cover~~
 
-## Screenshots
-
-![Cover](./figures/sc1.png)
-![Head](./figures/sc2.png)
-![Addition](./figures/sc3.png)
