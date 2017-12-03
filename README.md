@@ -12,7 +12,7 @@ Only tested on TexLive 2017, Windows 10, xelatex.
 latexmk --xelatex report.tex
 ```
 
-OR
+Or
 
 ```bash
 xelatex report.tex
@@ -20,4 +20,10 @@ xelatex report.tex
 
 ## To do
 
-- Add a cover
+- ~~Add a cover~~
+
+## Screenshots
+
+![Cover](./figures/sc1.png)
+![Head](./figures/sc2.png)
+![Addition](./figures/sc3.png)

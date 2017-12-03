@@ -8,6 +8,7 @@
 \RequirePackage{enumitem}
 \RequirePackage{listings}
 \RequirePackage{xcolor}
+\RequirePackage{array}
 
 \linespread{1.2}
 \geometry{top=1in,bottom=1in,left=1in,right=1in}
@@ -99,8 +100,38 @@
     实验名称： & \ZJUunderline[150pt]\newtitle & 实验类型： &\ZJUunderline[50pt]\exptype & 同组学生姓名：& \ZJUunderline[50pt]\group
   \end{tabular*}
 \end{table}
+\thispagestyle{empty}
+
 }
 
 % 封面
 \newcommand{\makecover}{
+  \begin{center}
+    \begin{center}
+      \includegraphics[width=0.8\linewidth]{cover.png}
+    \end{center}
+    \vspace{1cm}
+    \bfseries\huge{本科实验报告}\\
+    \vspace{0.5cm}
+    \bfseries\Large{\newtitle}
+    \vspace{3cm}
+    \begin{center}
+      \Large
+      \linespread{2}
+      \centering
+      \renewcommand\arraystretch{1.6}
+      \begin{tabular}{p{3cm}p{6cm}}
+        \bfseries{课程名称：} & \course \\ \cline{2-2}
+        \bfseries{姓名：}     & \name   \\ \cline{2-2}
+        \bfseries{学院：}     & \college \\ \cline{2-2}
+        \bfseries{专业：}     & \major  \\ \cline{2-2}
+        \bfseries{学号：}     & \stuid  \\ \cline{2-2}
+        \bfseries{指导老师：} & \tutor  \\ \cline{2-2}
+      \end{tabular}
+    \end{center}
+    \vspace{2cm}
+    \Large{\newdate}
+  \end{center}
+  \thispagestyle{empty}
+  \newpage
 }
