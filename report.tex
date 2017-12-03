@@ -1,12 +1,12 @@
-\documentclass{zjureport}
+\documentclass[withcover]{zjureport}
 % =============================================
-% Part 1 Edit the info
+% Part 0 Edit the info
 % =============================================
 
 \dmajor{信息工程}
 \dname{徐阳}
 % 假装封装了一下前面的变量定义部分
-
+\title{本科实验报告}
 \newcommand{\stuid}{3171002333}
 \newcommand{\newdate}{2017-10-09}
 \newcommand{\loc}{寝室}
@@ -18,18 +18,39 @@
 \newcommand{\exptype}{设计实验}
 \newcommand{\group}{None}
 
-% 下划线的一个定义
-
-  
-% =============================================
-% Part 1 Main document
-% =============================================
 \begin{document}
+% =============================================
+% Part 1 Header
+% =============================================
+\makecover
 \thispagestyle{empty}
+\begin{center}
+  \begin{figure}[!htbp]
+    \centerline{\includegraphics[width=0.6\linewidth]{cover.png}}
+  \end{figure}
+  \vspace{2cm}
+  \bfseries\huge{本科实验报告}
+  \vspace{5cm}
+  \begin{table}[!htbp]
+    \Large
+    \linespread{2}
+    \centering
+    \begin{tabular*}{8cm}{ll}
+      \bfseries{课程名称：} & \course \\
+      \bfseries{姓名：}     & \name   \\
+      \bfseries{学院：}     & \name   \\
+      \bfseries{专业：}     & \major  \\
+      \bfseries{学号：}     & \stuid  \\
+      \bfseries{指导老师：} & \tutor
+    \end{tabular*}
+  \end{table}
+  \vspace{2cm}
+  \Large{\newdate}
+\end{center}
+\newpage
 
-\makeCover
-%封装了一下这部分
-%还把下划线弄了一下
+\thispagestyle{empty}
+\makeheader
 
 % =============================================
 % Part 2 Main document
@@ -95,6 +116,6 @@
 
 \section{实验结果与分析}
 
-balabalabala
+  balabalabala
 
 \end{document}

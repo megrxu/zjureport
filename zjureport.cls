@@ -1,6 +1,5 @@
-\ProvidesClass{zjureport}[2017/11/11 v1.1 Ching Swy]
+\ProvidesClass{zjureport}
 \LoadClass{article}
-\RequirePackage{xeCJK}
 \RequirePackage{ctex}
 \RequirePackage{graphicx}
 \RequirePackage{geometry}
@@ -33,6 +32,8 @@
 
 \titlespacing{\subsection}{2em}{*4}{*1.5}
 
+% 代码格式和颜色定义
+
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{comment}{rgb}{0.56,0.64,0.68}
@@ -62,7 +63,7 @@
 \newcommand\dmajor[1]{\def\major{#1}}
 \newcommand\dname[1]{\def\name{#1}}
 
-
+% 页眉
 \pagestyle{fancy}
 \lhead{实验名称：\newtitle}
 \chead{姓名：\name}
@@ -72,7 +73,8 @@
 \def\ZJUunderline[#1]#2{%
   \underline{\hbox to #1{\hfil#2\hfil}}}
 
-\newcommand{\makeCover}{
+% 首页头部
+\newcommand{\makeheader}{
 \begin{figure}[h]
   \begin{minipage}{0.7\linewidth}
     \centerline{\includegraphics[width=\linewidth]{head.jpg}}
@@ -97,4 +99,8 @@
     实验名称： & \ZJUunderline[150pt]\newtitle & 实验类型： &\ZJUunderline[50pt]\exptype & 同组学生姓名：& \ZJUunderline[50pt]\group
   \end{tabular*}
 \end{table}
+}
+
+% 封面
+\newcommand{\makecover}{
 }
