@@ -9,6 +9,7 @@
 \RequirePackage{listings}
 \RequirePackage{xcolor}
 \RequirePackage{array}
+\RequirePackage{mathtools}
 
 \linespread{1.2}
 \geometry{top=1in,bottom=1in,left=1in,right=1in}
@@ -19,10 +20,7 @@
 \newlist{clause}{enumerate}{1}
 \setlist[clause]{fullwidth,itemindent=2em,label=(\arabic*)}
 \newCJKfontfamily[song]\song{SimSun}
-%[AutoFakeBold]
-% 这句估计15不支持这样的语法
 
-% \setmainfont{CMU Serif}
 \setmonofont{Lucida Console}
 \setsansfont{SimHei}
 \titleformat*{\section}{\large\bfseries}
@@ -34,11 +32,9 @@
 \titlespacing{\subsection}{2em}{*4}{*1.5}
 
 % 代码格式和颜色定义
-
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{comment}{rgb}{0.56,0.64,0.68}
-
 \lstset{
   frame=tb,
   aboveskip=3mm,
@@ -61,17 +57,28 @@
   tabsize=2,
 }
 
-\newcommand\dmajor[1]{\def\major{#1}}
-\newcommand\dname[1]{\def\name{#1}}
+% 信息
+\newcommand\major[1]{\def\@major{#1}}
+\newcommand\name[1]{\def\@name{#1}}
+\newcommand\stuid[1]{\def\@stuid{#1}}
+\newcommand\college[1]{\def\@college{#1}}
+\newcommand\newdate[1]{\def\@newdate{#1}}
+\newcommand\loc[1]{\def\@loc{#1}}
+\newcommand\course[1]{\def\@course{#1}}
+\newcommand\tutor[1]{\def\@tutor{#1}}
+\newcommand\grades[1]{\def\@grades{#1}}
+\newcommand\newtitle[1]{\def\@newtitle{#1}}
+\newcommand\exptype[1]{\def\@exptype{#1}}
+\newcommand\group[1]{\def\@group{#1}}
 
 % 页眉
 \pagestyle{fancy}
-\lhead{实验名称：\newtitle}
-\chead{姓名：\name}
-\rhead{学号：\stuid}
+\lhead{实验名称：\@newtitle}
+\chead{姓名：\@name}
+\rhead{学号：\@stuid}
 
-% 下划线的一个定义
-\def\ZJUunderline[#1]#2{%
+% 下划线定义
+\def\zjuu[#1]#2{%
   \underline{\hbox to #1{\hfil#2\hfil}}}
 
 % 首页头部
@@ -84,11 +91,11 @@
   \begin{minipage}{.3\linewidth}
     \raggedleft
     \begin{tabular*}{.8\linewidth}{ll}
-      专业： & \ZJUunderline[70pt]\major   \\
-      姓名： & \ZJUunderline[70pt]\name    \\
-      学号： & \ZJUunderline[70pt]\stuid   \\
-      日期： & \ZJUunderline[70pt]\newdate \\
-      地点： & \ZJUunderline[70pt]\loc
+      专业： & \zjuu[70pt]\@major   \\
+      姓名： & \zjuu[70pt]\@name    \\
+      学号： & \zjuu[70pt]\@stuid   \\
+      日期： & \zjuu[70pt]\@newdate \\
+      地点： & \zjuu[70pt]\@loc
     \end{tabular*}
   \end{minipage}
 \end{figure}
@@ -96,8 +103,8 @@
 \begin{table}[!htbp]
   \centering
   \begin{tabular*}{\linewidth}{llllll}
-    课程名称： & \ZJUunderline[150pt]\course   & 指导老师： & \ZJUunderline[50pt]\tutor   & 成绩：       &  \ZJUunderline[50pt]\grades \\
-    实验名称： & \ZJUunderline[150pt]\newtitle & 实验类型： &\ZJUunderline[50pt]\exptype & 同组学生姓名：& \ZJUunderline[50pt]\group
+    课程名称： & \zjuu[150pt]\@course   & 指导老师： & \zjuu[50pt]\@tutor   & 成绩：       &  \zjuu[50pt]\@grades \\
+    实验名称： & \zjuu[150pt]\@newtitle & 实验类型： &\zjuu[50pt]\@exptype & 同组学生姓名：& \zjuu[50pt]\@group
   \end{tabular*}
 \end{table}
 \thispagestyle{empty}
@@ -113,7 +120,7 @@
     \vspace{1cm}
     \bfseries\huge{本科实验报告}\\
     \vspace{0.5cm}
-    \bfseries\Large{\newtitle}
+    \bfseries\Large{\@newtitle}
     \vspace{3cm}
     \begin{center}
       \Large
@@ -121,16 +128,16 @@
       \centering
       \renewcommand\arraystretch{1.6}
       \begin{tabular}{p{3cm}p{6cm}}
-        \bfseries{课程名称：} & \course \\ \cline{2-2}
-        \bfseries{姓名：}     & \name   \\ \cline{2-2}
-        \bfseries{学院：}     & \college \\ \cline{2-2}
-        \bfseries{专业：}     & \major  \\ \cline{2-2}
-        \bfseries{学号：}     & \stuid  \\ \cline{2-2}
-        \bfseries{指导老师：} & \tutor  \\ \cline{2-2}
+        \bfseries{课程名称：} & \@course \\ \cline{2-2}
+        \bfseries{姓名：}     & \@name   \\ \cline{2-2}
+        \bfseries{学院：}     & \@college \\ \cline{2-2}
+        \bfseries{专业：}     & \@major  \\ \cline{2-2}
+        \bfseries{学号：}     & \@stuid  \\ \cline{2-2}
+        \bfseries{指导老师：} & \@tutor  \\ \cline{2-2}
       \end{tabular}
     \end{center}
     \vspace{2cm}
-    \Large{\newdate}
+    \Large{\@newdate}
   \end{center}
   \thispagestyle{empty}
   \newpage
