@@ -1,6 +1,7 @@
 \ProvidesClass{zjureport}
 \LoadClass{article}
-\RequirePackage{ctex}
+\RequirePackage{xeCJK}
+\RequirePackage{CJKnumb}
 \RequirePackage{graphicx}
 \RequirePackage{geometry}
 \RequirePackage{titlesec}
@@ -14,15 +15,16 @@
 \linespread{1.2}
 \geometry{top=1in,bottom=1in,left=1in,right=1in}
 \setcounter{secnumdepth}{2}
-\renewcommand\thesection{\chinese{section}、}
+\renewcommand\thesection{\CJKnumber{\arabic{section}}、}
 \renewcommand\thesubsection{\arabic{subsection}.}
 \renewcommand\thesubsubsection{(\arabic{subsubsection})}
 \newlist{clause}{enumerate}{1}
 \setlist[clause]{fullwidth,itemindent=2em,label=(\arabic*)}
-\newCJKfontfamily[song]\song{SimSun}
 
-\setmonofont{Lucida Console}
-\setsansfont{SimHei}
+\setCJKmainfont[ItalicFont={KaiTi},BoldFont={SimHei}]{SimSun}
+\setmainfont[ItalicFont={KaiTi}]{CMU Serif}
+\setmonofont[ItalicFont={KaiTi}]{Lucida Console}
+
 \titleformat*{\section}{\large\bfseries}
 \titleformat*{\subsection}{\normalsize\bfseries}
 \titleformat*{\subsubsection}{\normalsize}
