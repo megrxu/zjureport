@@ -8,14 +8,14 @@
 \title{本科实验报告}
 \stuid{3171002333}
 \college{信息与电子工程学院}
-\newdate{2017-10-09}
-\loc{寝室}
+\date{\zhtoday}
+\lab{寝室}
 \course{数字信号处理}
-\tutor{Hao}
+\instructor{Hao}
 \grades{59}
-\newtitle{系统传输函数零极点分析}
+\expname{系统传输函数零极点分析}
 \exptype{设计实验}
-\group{None}
+\partner{None}
 
 \begin{document}
 % =============================================
@@ -36,18 +36,18 @@
 
     给出如下差分方程：
     $$y(n) - (0.5+a)\times y(n-1) + 0.5ay(n-2) = x(n)$$
-    \begin{clause}
+    \begin{enumerate}
       \item 求解系统传输函数表达式。
       \item 当a取0.8，0.9，1.0，1.1时，画出零极点分布图。
       \item 根据（2）中a的取值，分别画出幅频响应函数。
-    \end{clause}
+    \end{enumerate}
 
   \subsection{实验步骤}
-    \begin{clause}
+    \begin{enumerate}
       \item 编写程序，求解零极点
       \item 画出图形。
       \item 观察结果。
-    \end{clause}
+    \end{enumerate}
 
 \section{主要仪器设备}
   计算机，Matlab软件
@@ -66,28 +66,30 @@
     $$H(z) = \frac{Y(z)}{X(z)} = \frac{z^2}{z^2-(0.5+a)z+0.5a}$$
   \subsection{零极点分布图}
     a = 0.8，0.9，1.1时，系统的零极点分布图及程序如下：
-    \begin{clause}
+    \begin{enumerate}
       \item 图像
       \begin{center}
         \includegraphics[width=0.6\linewidth]{01.jpg}
       \end{center}
       \item 代码
-      \lstinputlisting[language=MATLAB]{codes/do.m}
-    \end{clause}
+      \lstinputlisting[language=MATLAB]{code/do.m}
+    \end{enumerate}
 
   \subsection{频率响应}
     a = 0.8，0.9，1.0，1.1时，系统的频率响应函数图形及程序如下：
-    \begin{clause}
+    \begin{enumerate}
       \item 图像
       \begin{center}
         \includegraphics[width=0.6\linewidth]{02-1.jpg}
       \end{center}
       \item 代码
-      \lstinputlisting[language=MATLAB]{codes/next.m}
-    \end{clause}
+      \lstinputlisting[language=MATLAB]{code/next.m}
+    \end{enumerate}
 
 \section{实验结果与分析}
 
-  balabalabala
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet pharetra orci. Pellentesque ex est, ultricies non viverra sed, iaculis sed est. Suspendisse ex felis, aliquam et nulla in, vehicula gravida velit. In porttitor volutpat tincidunt. Aenean eleifend non augue sit amet ultrices. Proin rutrum odio vitae est luctus, eu facilisis leo dapibus. Aliquam commodo efficitur erat, sit amet pulvinar nulla ultrices ac. Vestibulum ullamcorper malesuada odio. Suspendisse id sollicitudin arcu. Nam fringilla commodo neque quis posuere. Sed lobortis justo nisl, ut molestie sapien semper ac. Proin in massa vel neque tempus porta id accumsan magna. Aliquam pharetra lacus ac arcu accumsan varius. Praesent condimentum mi vitae purus elementum imperdiet.
+
+  Etiam in bibendum arcu. Etiam porta metus ligula. Cras tempor, leo vel faucibus consequat, diam justo malesuada ex, et pretium risus est sit amet lectus. In sit amet efficitur quam. Maecenas quis molestie odio, et consectetur augue. Mauris erat erat, tristique a nunc in, molestie molestie lectus. Nullam commodo ornare urna, vel tincidunt libero aliquam ut. Ut hendrerit nunc id sapien tristique mollis. Aenean maximus, neque molestie dignissim cursus, augue neque dictum purus, vitae varius diam ex vitae est. Nulla bibendum facilisis semper. Nulla placerat ultricies lorem, quis consequat metus pulvinar eu. Morbi sed massa arcu. Nulla sagittis felis a suscipit elementum.
 
 \end{document}
