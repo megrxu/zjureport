@@ -1,0 +1,8 @@
+version: 2
+jobs:
+   build:
+     docker:
+       - image: danteev/texlive
+     steps:
+       - checkout
+       - run: latexmk -xelatex -interaction=nonstopmode -file-line-error report.tex
