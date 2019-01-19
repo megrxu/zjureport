@@ -1,5 +1,5 @@
 \ProvidesClass{zjureport}
-\LoadClass{article}
+\LoadClass{ctexart}
 \RequirePackage{xeCJK}
 \RequirePackage{CJKnumb}
 \RequirePackage{graphicx}
@@ -21,11 +21,10 @@
 \renewcommand\thesection{\CJKnumber{\arabic{section}}、}
 \renewcommand\thesubsection{\arabic{subsection}.}
 \renewcommand\thesubsubsection{(\arabic{subsubsection})}
-\setlist[enumerate]{label=(\arabic*)}
+\setlist[enumerate,1]{label=(\arabic*)}
+\setlist[enumerate,2]{label=\alph*.}
 
 \setCJKmainfont[ItalicFont={KaiTi},BoldFont={SimHei}]{SimSun}
-\setmainfont[ItalicFont={KaiTi}]{CMU Serif}
-\setmonofont[ItalicFont={KaiTi}]{Lucida Console}
 
 \titleformat*{\section}{\large\bfseries}
 \titleformat*{\subsection}{\normalsize\bfseries}

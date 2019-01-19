@@ -1,0 +1,22 @@
+{
+    "latex-workshop.latex.tools": [{
+        "name": "latexmk-xelatex",
+        "command": "latexmk",
+        "args": [
+          "-xelatex",
+          "-synctex=1",
+          "-interaction=nonstopmode",
+          "-file-line-error",
+          "%DOC%"
+        ]
+      }
+    ],
+    "latex-workshop.latex.recipes": [
+      {
+        "name": "latexmk-xelatex",
+        "tools": [
+          "latexmk-xelatex"
+        ]
+      }
+    ],
+}
