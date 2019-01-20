@@ -2,7 +2,9 @@ version: 2
 jobs:
    build:
      docker:
-       - image: danteev/texlive
+       - image: listx/texlive:2018-fonts
      steps:
        - checkout
+       - run: mkdir -p ~/.local/share/fonts && cp -r fonts/* ~/.local/share/fonts/
+       - run: fc-cache -rv
        - run: latexmk -xelatex -interaction=nonstopmode -file-line-error report.tex
