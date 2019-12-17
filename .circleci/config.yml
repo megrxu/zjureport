@@ -5,7 +5,7 @@ jobs:
        - image: circleci/buildpack-deps:latest
      steps:
        - checkout
-       - run: sudo apt install -y texlive-base texlive-xetex texlive-cjk latexmk
+       - run: sudo apt install -y texlive-base texlive-xetex texlive-chinese latexmk
        - run: for i in simhei.ttf simkai.ttf simsun.ttc simsunb.ttf simfang.ttf; do wget -P fonts/ https://xugr.keybase.pub/static/fonts/$i; done
        - run: mkdir -p ~/.local/share/fonts && cp -r fonts/* ~/.local/share/fonts/
        - run: fc-cache -rv
