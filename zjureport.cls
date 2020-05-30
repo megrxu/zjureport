@@ -17,7 +17,7 @@
 
 \linespread{1.2}
 \geometry{top=1in,bottom=1in,left=1in,right=1in}
-\setcounter{secnumdepth}{2}
+\setcounter{secnumdepth}{3}
 \renewcommand\thesection{\CJKnumber{\arabic{section}}、}
 \renewcommand\thesubsection{\arabic{subsection}.}
 \renewcommand\thesubsubsection{(\arabic{subsubsection})}
@@ -33,6 +33,7 @@
 {picture/}{pic/}{pics/}{image/}{images/}}
 
 \titlespacing{\subsection}{1em}{*4}{*1.5}
+\titlespacing{\subsubsection}{1em}{*4}{*1.5}
 
 % 代码格式和颜色定义
 \definecolor{dkgreen}{rgb}{0,0.6,0}
