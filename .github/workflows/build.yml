@@ -6,6 +6,8 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v1
+      - name: Install language packages
+        run: sudo apt install -y texlive-base texlive-xetex texlive-lang-chinese latexmk
       - name: Download the fonts
         run: for i in simhei.ttf simkai.ttf simsun.ttc simsunb.ttf simfang.ttf; do wget -P fonts/ https://xugr.keybase.pub/static/fonts/$i; done
       - name: Copy the fonts
