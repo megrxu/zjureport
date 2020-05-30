@@ -15,7 +15,4 @@ jobs:
       - name: Build font information caches
         run: fc-cache -rv
       - name: Compile LaTeX document
-        uses: dante-ev/latex-action@master
-        with:
-          root_file: report.tex
-          args: -xelatex -latexoption=-file-line-error -latexoption=-interaction=nonstopmode
+        run: latexmk -xelatex -interaction=nonstopmode -file-line-error report.tex
