@@ -8,6 +8,8 @@ jobs:
         uses: actions/checkout@v1
       - name: Download the fonts
         run: for i in simhei.ttf simkai.ttf simsun.ttc simsunb.ttf simfang.ttf; do wget -P fonts/ https://xugr.keybase.pub/static/fonts/$i; done
+      - name: Copy the fonts
+        run: mkdir -p ~/.local/share/fonts && cp -r fonts/* ~/.local/share/fonts/
       - name: Build font information caches
         run: fc-cache -rv
       - name: Compile LaTeX document
