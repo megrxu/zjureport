@@ -23,9 +23,9 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Run Tectonic
-        run: tectonic report.tex
+        run: tectonic zjureport.tex
       - name: Upload pdf
         uses: actions/upload-artifact@v2
         with:
           name: Example
-          path: report.pdf
+          path: zjureport.pdf
