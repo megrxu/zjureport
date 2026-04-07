@@ -1,0 +1,27 @@
+%% zjureport.ins
+\input docstrip.tex
+\keepsilent
+\askforoverwritefalse
+
+\preamble
+This is a generated file.
+Copyright (C) 2026 by Your Name
+\endpreamble
+
+\generate{
+  \file{zjureport.cls}{\from{zjureport.dtx}{class}}
+  \file{zjureport-example.tex}{\from{zjureport.dtx}{example}}
+}
+
+\obeyspaces
+\Msg{****************************************************}
+\Msg{* *}
+\Msg{* To produce the documentation run the file        *}
+\Msg{* xelatex zjureport.dtx                            *}
+\Msg{* *}
+\Msg{* To compile the example document run:             *}
+\Msg{* xelatex zjureport-example.tex                    *}
+\Msg{* *}
+\Msg{****************************************************}
+
+\endbatchfile

@@ -1,0 +1,294 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2026 by Your Name
+%
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3c
+% of this license or (at your option) any later version.
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{zjureport.dtx}[2026/04/07 v2.1 ZJU Lab Report Template]
+\documentclass{ctxdoc}
+\usepackage{hypdoc}
+\begin{document}
+  \DocInput{zjureport.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{0}
+%
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \* Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \changes{v2.1}{2026/04/07}{恢复原始视觉布局，修正字体调用与变量定义}
+%
+% \GetFileInfo{zjureport.dtx}
+%
+% \title{浙江大学实验报告模板 \texttt{zjureport} \thanks{这份文档对应 \filename ~ \fileversion，最后修改日期 \filedate。}}
+% \author{Your Name}
+% \date{\filedate}
+%
+% \maketitle
+%
+% \section{简介}
+% 本模板是为浙江大学本科生设计的实验报告 \LaTeX{} 文档类。基于 \texttt{ctexart} 编写。
+%
+% \section{使用方法}
+% 提取文件后，请使用 \texttt{xelatex} 编译。
+%
+% \subsection{宏包选项}
+% \DescribeMacro{codeformat} 
+% 使用模板预设的 \texttt{listings} 代码格式。
+%
+% \subsection{用户命令}
+% \DescribeMacro{\zjulogo} 
+% 导入校徽图片。
+%
+% \DescribeMacro{\name} 
+% 设置学生姓名。
+%
+% \DescribeMacro{\stuid} 
+% 设置学生学号。
+%
+% \DescribeMacro{\makeheader} 
+% 生成正文首页头部信息。
+%
+% \DescribeMacro{\makecover} 
+% 生成独立封面。
+%
+% \StopEventually{}
+%
+% \section{代码实现}
+%
+%    \begin{macrocode}
+%<*class>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{zjureport}[2026/04/07 v2.1 ZJU Lab Report Template]
+
+\newif\ifzju@codeformat
+\zju@codeformatfalse
+\DeclareOption{codeformat}{\zju@codeformattrue}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
+\ProcessOptions\relax
+
+\LoadClass[fontset=fandol]{ctexart}
+
+\RequirePackage{graphicx, xcolor, tikz}
+\RequirePackage{geometry, titlesec, fancyhdr}
+\RequirePackage{indentfirst, enumitem, zhnumber}
+
+\linespread{1.2}
+\geometry{top=1in,bottom=1in,left=1in,right=1in}
+
+\setcounter{secnumdepth}{3}
+\renewcommand\thesection{\zhnumber{\arabic{section}}、}
+\renewcommand\thesubsection{\arabic{subsection}.}
+\renewcommand\thesubsubsection{(\arabic{subsubsection})}
+\setlist[enumerate,1]{label=(\arabic*)}
+\setlist[enumerate,2]{label=\alph*.}
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize}
+\titleformat*{\subsubsection}{\normalsize}
+
+\ifzju@codeformat
+  \RequirePackage{listings, cncolours}
+  \colorlet{keyword}{松花绿}
+  \colorlet{comment}{漆黑!50}
+  \colorlet{emph1}{靛蓝}
+  \colorlet{emph2}{琥珀}
+  \lstset{
+    frame=tb, framerule=0.5pt, numbers=none,
+    breaklines=true, breakatwhitespace=true,
+    keywordstyle = \bfseries\color{keyword},
+    commentstyle = \itshape\color{comment},
+    emphstyle    = [1]\itshape\color{emph1},
+    emphstyle    = [2]\color{emph2},
+    basicstyle   = {\small\ttfamily},
+  }
+\fi
+
+\newcommand{\@major}{}
+\newcommand{\@name}{}
+\newcommand{\@stuid}{}
+\newcommand{\@college}{}
+\newcommand{\@lab}{}
+\newcommand{\@course}{}
+\newcommand{\@instructor}{}
+\newcommand{\@grades}{}
+\newcommand{\@expname}{}
+\newcommand{\@exptype}{}
+\newcommand{\@partner}{}
+
+\newcommand\major[1]{\def\@major{#1}}
+\newcommand\name[1]{\def\@name{#1}}
+\newcommand\stuid[1]{\def\@stuid{#1}}
+\newcommand\college[1]{\def\@college{#1}}
+\renewcommand\date[1]{\def\@date{#1}}
+\newcommand\lab[1]{\def\@lab{#1}}
+\newcommand\course[1]{\def\@course{#1}}
+\newcommand\instructor[1]{\def\@instructor{#1}}
+\newcommand\grades[1]{\def\@grades{#1}}
+\newcommand\expname[1]{\def\@expname{#1}}
+\newcommand\exptype[1]{\def\@exptype{#1}}
+\newcommand\partner[1]{\def\@partner{#1}}
+
+\newcommand{\@zjulogo}[1]{%
+  \IfFileExists{figures/浙江大学.pdf}{%
+    \includegraphics[width=#1]{figures/浙江大学.pdf}%
+  }{%
+    \textcolor{black!15}{\rule{#1}{1.2cm}}% 根据传入的宽度渲染占位符
+  }%
+}
+\newcommand{\zjulogo}[1]{%
+  \renewcommand{\@zjulogo}[1]{\includegraphics[width=##1]{#1}}%
+}
+\pagestyle{fancy}
+\lhead{实验名称：\@expname}
+\chead{姓名：\@name}
+\rhead{学号：\@stuid}
+
+\def\zjuu[#1]#2{\underline{\hbox to #1{\hfil#2\hfil}}}
+
+\newcommand{\makeheader}{
+\begin{figure}[h]
+  \begin{minipage}{0.4\linewidth}
+    \centerline{\@zjulogo{\linewidth}}
+  \end{minipage}%
+  \begin{minipage}{0.3\linewidth}
+    \centerline{\fontsize{36}{50}\selectfont\kaishu\addCJKfontfeatures{FakeBold=2.5} 实验报告}
+  \end{minipage}%
+  \begin{minipage}{0.3\linewidth}
+    \raggedleft
+    \begin{tabular*}{.8\linewidth}{ll}
+      专业： & \zjuu[70pt]\@major \\
+      姓名： & \zjuu[70pt]\@name  \\
+      学号： & \zjuu[70pt]\@stuid \\
+      日期： & \zjuu[70pt]\@date \\
+      地点： & \zjuu[70pt]\@lab
+    \end{tabular*}
+  \end{minipage}
+\end{figure}
+
+\begin{table}[!htbp]
+  \centering
+  \begin{tabular*}{\linewidth}{llllll}
+    课程名称： & \zjuu[150pt]\@course  & 
+    指导老师： & \zjuu[50pt]\@instructor & 
+    成绩：     & \zjuu[50pt]\@grades \\
+    实验名称： & \zjuu[150pt]\@expname & 
+    实验类型： & \zjuu[50pt]\@exptype    & 
+    同组姓名： & \zjuu[50pt]\@partner
+  \end{tabular*}
+\end{table}
+\thispagestyle{empty}
+}
+
+\newcommand{\makecover}{
+  \begin{center}
+    \begin{center}
+      \@zjulogo{0.7\linewidth}
+    \end{center}
+    \vspace{1cm}
+    \huge{\textbf{本科实验报告}}\\
+    \vspace{0.5cm}
+    \Large{\textbf{\@expname}}
+    \vspace{3cm}
+    \begin{center}
+      \Large\linespread{2}\centering
+      \renewcommand\arraystretch{1.6}
+      \begin{tabular}{p{3cm}p{6cm}}
+        \textbf{课程名称：} & \@course \\ \cline{2-2}
+        \textbf{姓名：}     & \@name   \\ \cline{2-2}
+        \textbf{学院：}     & \@college \\ \cline{2-2}
+        \textbf{专业：}     & \@major  \\ \cline{2-2}
+        \textbf{学号：}     & \@stuid  \\ \cline{2-2}
+        \textbf{指导老师：} & \@instructor  \\ \cline{2-2}
+      \end{tabular}
+    \end{center}
+    \vfill
+    \Large{\@date}
+  \end{center}
+  \thispagestyle{empty}\newpage
+}
+%</class>
+%    \end{macrocode}
+%
+% \iffalse
+%<*example>
+\documentclass[codeformat]{zjureport}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true}
+
+\major{信息工程}
+\name{张扬}
+\stuid{3171002333}
+\college{信息与电子工程学院}
+\date{\zhtoday}
+\lab{东四-A-308}
+\course{\LaTeX 模板使用}
+\instructor{赵林平}
+\grades{93}
+\expname{使用实验报告模板}
+\exptype{操作实验}
+\partner{无}
+
+\begin{document}
+\makecover
+\makeheader
+\section{实验目的和要求}
+测试楷体与非粗体封面内容效果。
+
+\section{实验内容和步骤}
+
+\subsection{实验内容}
+
+\subsection{实验步骤}
+
+\section{主要仪器设备}
+计算机及配套软件。
+
+\section{操作方法和实验步骤}
+
+\section{实验数据记录和处理}
+
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+int main() {   
+    int number;
+   
+    printf("Enter an integer: ");  
+    
+    // reads and stores input
+    scanf("%d", &number);
+
+    // displays output
+    printf("You entered: %d", number);
+    
+    return 0;
+}
+\end{lstlisting}
+
+\section{实验结果与分析}
+\end{document}
+%</example>
+% \fi
+%
+% \Finale
+\endinput
